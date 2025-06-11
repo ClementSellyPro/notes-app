@@ -9,8 +9,5 @@
 
 body {
   font-family: 'Funnel Sans', sans-serif;
-}
-
-.logo-title {
-  font-family: 'Birthstone', cursive;
+  height: 100vh;
 }

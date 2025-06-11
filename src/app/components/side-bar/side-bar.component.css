@@ -1,0 +1,50 @@
+aside {
+  width: 20%;
+  height: 100%;
+  padding: 10px 20px;
+  border-right: 1px solid rgb(115, 115, 115)
+}
+
+.logo-title {
+  font-size: 54px;
+  font-family: 'Birthstone', cursive;
+}
+
+.links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  list-style: none;
+  font-size: 18px;
+  font-weight: 500;
+  margin-top: 25px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgb(167, 167, 167);
+}
+
+.link {
+  position: relative;
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  padding: 10px 20px;
+  border-radius: 8px;
+}
+
+.link:hover, .selected {
+  cursor: pointer;
+  background-color:rgb(240, 240, 240);
+}
+.selected:hover {
+  filter: brightness(0.9);
+}
+
+.link:hover .link-arrow, .selected .link-arrow {
+  display: block;
+}
+
+.link-arrow {
+  display: none;
+  position: absolute;
+  right: 15px;
+}
