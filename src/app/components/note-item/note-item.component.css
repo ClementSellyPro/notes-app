@@ -1,0 +1,31 @@
+.note-item {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border-radius: var(--border-radius);
+  padding: 10px;
+  border-bottom: 1px solid var(--bg-color-element)
+}
+
+.note-item:hover {
+  cursor: pointer;
+  background-color: var(--bg-color-element);
+}
+
+.note-item-title {
+  font-size: 18px;
+}
+
+.note-item-tag {
+  font-size: 12px;
+  width: fit-content;
+  padding: 3px 8px;
+  border-radius: calc(var(--border-radius) / 2);
+  background-color: var(--bg-color-element);
+  filter: brightness(0.9);
+}
+
+.note-item-date {
+  font-size: 14px;
+  color: var(--text-color-light)
+}

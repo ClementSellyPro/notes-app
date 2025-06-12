@@ -18,5 +18,6 @@ body {
   --bg-color-element: #f3f4f8;
   --text-color: #222222;
   --border-color: #c3c3c3;
+  --text-color-light: #7b7b7b;
   --border-radius: 8px;
 }

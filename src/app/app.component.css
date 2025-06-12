@@ -7,3 +7,8 @@ main {
 .main-content {
   width: 100%;
 }
+
+.sections {
+  display: flex;
+  height: 85%;
+}
