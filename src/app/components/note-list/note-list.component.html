@@ -1,11 +1,8 @@
 <section class='note-list-section'>
   <button class='btn-add'>+ Create New Note</button>
   <div class='notes'>
-    <app-note-item />
-    <app-note-item />
-    <app-note-item />
-    <app-note-item />
-    <app-note-item />
-    <app-note-item />
+    @for(note of (noteList$ | async); track note.id){
+      <app-note-item [note]='note' />
+    }
   </div>
 </section>

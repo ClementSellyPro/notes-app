@@ -1,5 +1,5 @@
-<div class='note-item'>
-  <h3 class='note-item-title'>React Performance Optimization</h3>
-  <p class='note-item-tag'>Professionnel</p>
-  <p class='note-item-date'>29 Oct 2024</p>
+<div class='note-item' [ngClass]='{ archived: note.isArchived}'>
+  <h3 class='note-item-title'>{{ note.title }}</h3>
+  <p class='note-item-tag'>{{ note.tag }}</p>
+  <p class='note-item-date'>{{ note.lastEdited | date:'dd MMM yyyy' }}</p>
 </div>
