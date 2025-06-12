@@ -8,7 +8,8 @@ header {
 }
 
 .page-title {
-
+  font-weight: 500;
+  font-size: 32px;
 }
 
 .control-user {
@@ -17,15 +18,30 @@ header {
   gap: 20px;
 }
 
-.search-input {
+.search-input-container {
+  display: flex;
+  align-items: center;
   border: 1px solid var(--border-color);
-  padding: 10px 20px;
   border-radius: var(--border-radius);
-  width: 300px;
+  padding-left: 20px;
 }
+
+.search-input-container .search-input:focus{
+  border: 1px solid var(--primary-color);
+}
+
+.search-input {
+  border: none;
+  padding: 10px 20px;
+  margin-left: 15px;
+  width: 300px;
+  font-size: 18px;
+  border: 1px solid transparent;
+  border-radius: 0 var(--border-radius) var(--border-radius) 0;
+}
+
 .search-input:focus {
   outline: none;
-  border: 1px solid var(--primary-color);
 }
 
 .setting-icon{
