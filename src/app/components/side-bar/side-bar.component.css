@@ -1,8 +1,8 @@
 aside {
-  width: 20%;
+  width: 320px;
   height: 100%;
   padding: 10px 20px;
-  border-right: 1px solid rgb(115, 115, 115)
+  border-right: 1px solid var(--border-color);
 }
 
 .logo-title {
@@ -19,7 +19,7 @@ aside {
   font-weight: 500;
   margin-top: 25px;
   padding-bottom: 20px;
-  border-bottom: 1px solid rgb(167, 167, 167);
+  border-bottom: 1px solid var(--border-color);
 }
 
 .link {
@@ -28,12 +28,12 @@ aside {
   align-items: flex-end;
   gap: 10px;
   padding: 10px 20px;
-  border-radius: 8px;
+  border-radius: var(--border-radius);
 }
 
 .link:hover, .selected {
   cursor: pointer;
-  background-color:rgb(240, 240, 240);
+  background-color: var(--bg-color-element);
 }
 .selected:hover {
   filter: brightness(0.9);

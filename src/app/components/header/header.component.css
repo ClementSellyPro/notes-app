@@ -1,0 +1,38 @@
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 30px 20px;
+  border-bottom: 1px solid var(--border-color);
+  width: 100%;
+}
+
+.page-title {
+
+}
+
+.control-user {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.search-input {
+  border: 1px solid var(--border-color);
+  padding: 10px 20px;
+  border-radius: var(--border-radius);
+  width: 300px;
+}
+.search-input:focus {
+  outline: none;
+  border: 1px solid var(--primary-color);
+}
+
+.setting-icon{
+  color: #999;
+}
+
+.setting-icon:hover {
+  cursor: pointer;
+  filter: brightness(0.9);
+}
