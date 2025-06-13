@@ -1,0 +1,34 @@
+.information-section {
+  width: 70%;
+  padding: 20px 25px;
+  color: var(--text-color-light);
+}
+
+.information-title {
+  font-size: 26px;
+  color: var(--text-color);
+}
+
+.information-details {
+  display: flex;
+  align-items: center;
+  gap: 40px;
+  padding: 18px 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.information-categories, .information-categories-values {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.information-category {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.information-text-content {
+  padding: 18px 0;
+}

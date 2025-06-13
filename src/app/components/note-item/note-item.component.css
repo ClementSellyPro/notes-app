@@ -4,7 +4,7 @@
   gap: 10px;
   border-radius: var(--border-radius);
   padding: 10px;
-  border-bottom: 1px solid var(--bg-color-element)
+  border-bottom: 1px solid var(--border-color);
 }
 
 .note-item:hover {
