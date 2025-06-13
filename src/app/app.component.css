@@ -9,6 +9,7 @@ main {
 }
 
 .sections {
+  position: relative;
   display: flex;
   height: 85%;
 }

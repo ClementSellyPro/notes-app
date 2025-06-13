@@ -1,0 +1,29 @@
+.controls-section {
+  position: absolute;
+  right: 0;
+  top: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 23%;
+  height: 100%;
+  padding: 20px 25px;
+  border-left: 1px solid var(--border-color);
+}
+
+.controls-section button {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  font-weight: 500;
+  padding: 10px 15px;
+  border-radius: var(--border-radius);
+  background-color: transparent;
+  border: 1px solid var(--border-color);
+}
+
+.controls-section button:hover {
+  cursor: pointer;
+  background-color: var(--bg-color-element);
+}
