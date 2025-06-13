@@ -1,4 +1,4 @@
-<div class='note-item' [ngClass]='{ archived: note.isArchived}'>
+<div class='note-item' [ngClass]='{ archived: note.isArchived, selected: isSelected$ | async }'>
   <h3 class='note-item-title'>{{ note.title }}</h3>
   <p class='note-item-tag'>{{ note.tag }}</p>
   <p class='note-item-date'>{{ note.lastEdited | date:'dd MMM yyyy' }}</p>

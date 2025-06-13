@@ -13,6 +13,13 @@ export class NotesService {
   isAllNotesSelected: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
   isAllNotesSelected$: Observable<boolean> = this.isAllNotesSelected.asObservable();
 
+  defaultNote: NoteType = {
+    id: '', title: '', lastEdited: Date.now(), text: '', tag: '', isArchived: false
+  };
+
+  currentNote: BehaviorSubject<NoteType> = new BehaviorSubject<NoteType>(this.defaultNote);
+  currentNote$: Observable<NoteType> = this.currentNote.asObservable();
+
   constructor() {
     this.allNotes.next([
       {
@@ -57,6 +64,7 @@ export class NotesService {
       }
     ]);
     this.notesData = this.allNotes.value;
+    this.currentNote.next(this.allNotes.value[0]);
   }
 
   getAllNotes(){
@@ -71,5 +79,10 @@ export class NotesService {
       this.allNotes.next(archivedList);
     }
     this.isAllNotesSelected.next(!this.isAllNotesSelected.value);
+  }
+
+  noteSelection(id: string) {
+    const selectedNote = this.allNotes.value.filter(note => note.id === id);
+    this.currentNote.next(selectedNote[0]);
   }
 }

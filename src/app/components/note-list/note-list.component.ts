@@ -23,4 +23,8 @@ export class NoteListComponent implements OnInit {
   ngOnInit(): void {
     this.noteList$ = this.notesService.getAllNotes();
   }
+
+  onNoteSelection(id: string) {
+    this.notesService.noteSelection(id);
+  }
 }
