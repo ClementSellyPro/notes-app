@@ -1,4 +1,11 @@
 <section class='controls-section'>
-  <button (click)="onArchiveNote()"><mat-icon>archived</mat-icon><span>Archive Note</span></button>
-  <button (click)="onDeleteNote()"><mat-icon>delete</mat-icon><span>Delete Note</span></button>
+  <button (click)="onArchiveNote()">
+    <mat-icon>archived</mat-icon>
+    <span> {{ (isCurrentNoteArchived$ | async) ? 'Unarchive Note' : 'Archive Note' }} </span>
+  </button>
+
+  <button (click)="onDeleteNote()">
+    <mat-icon>delete</mat-icon>
+    <span>Delete Note</span>
+  </button>
 </section>

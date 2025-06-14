@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, map, Observable } from 'rxjs';
 import { NoteType } from '../models/note.model';
 
 @Injectable({
@@ -19,6 +19,9 @@ export class NotesService {
 
   currentNote: BehaviorSubject<NoteType> = new BehaviorSubject<NoteType>(this.defaultNote);
   currentNote$: Observable<NoteType> = this.currentNote.asObservable();
+
+  isCurrentNoteArchived: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  isCurrentNoteArchived$: Observable<boolean> = this.isCurrentNoteArchived.asObservable();
 
   constructor() {
     this.allNotes.next([
@@ -84,5 +87,45 @@ export class NotesService {
   noteSelection(id: string) {
     const selectedNote = this.allNotes.value.filter(note => note.id === id);
     this.currentNote.next(selectedNote[0]);
+    this.isCurrentArchived();
+  }
+
+  deleteNote(){
+    this.notesData.filter(note => note.id !== this.currentNote.value.id);
+    this.allNotes.next(this.allNotes.value.filter(note => note.id !== this.currentNote.value.id));
+  }
+
+  archiveNote() {
+    console.log('archive');
+    this.notesData.forEach(note => {
+      if(note.id === this.currentNote.value.id){
+        note.isArchived = true;
+      }
+    });
+    this.allNotes.value.forEach(note => {
+      if(note.id === this.currentNote.value.id){
+        note.isArchived = true;
+      }
+    });
+    this.isCurrentArchived();
+  }
+
+  unarchiveNote() {
+    console.log('unarchive');
+    this.notesData.forEach(note => {
+      if(note.id === this.currentNote.value.id){
+        note.isArchived = false;
+      }
+    });
+    this.allNotes.value.forEach(note => {
+      if(note.id === this.currentNote.value.id){
+        note.isArchived = false;
+      }
+    });
+    this.isCurrentArchived();
+  }
+
+  isCurrentArchived() {
+    this.isCurrentNoteArchived.next( this.currentNote.value.isArchived );
   }
 }
