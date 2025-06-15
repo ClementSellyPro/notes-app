@@ -27,48 +27,47 @@ export class NotesService {
   isModalOpen$: Observable<boolean> = this.isModalOpen.asObservable();
 
   constructor() {
-    this.allNotes.next([
-      {
-        id: '1',
-        title: 'Grocery List',
-        lastEdited: Date.now() - 1000000,
-        text: 'Milk, Bread, Eggs, Butter',
-        tag: 'Personal',
-        isArchived: false
-      },
-      {
-        id: '2',
-        title: 'Meeting Notes',
-        lastEdited: Date.now() - 200000,
-        text: 'Discuss Q3 roadmap and hiring goals.',
-        tag: 'Work',
-        isArchived: false
-      },
-      {
-        id: '3',
-        title: 'Books to Read',
-        lastEdited: Date.now() - 5000000,
-        text: 'Atomic Habits, Deep Work, Clean Architecture',
-        tag: 'Personnal',
-        isArchived: true
-      },
-      {
-        id: '4',
-        title: 'Angular Workshop',
-        lastEdited: Date.now() - 300000,
-        text: 'Topics: Components, Services, Observables, Routing',
-        tag: 'Work',
-        isArchived: false
-      },
-      {
-        id: '5',
-        title: 'Vacation Plan',
-        lastEdited: Date.now() - 700000,
-        text: 'Look into flights to Italy and Airbnb options.',
-        tag: 'Personnal',
-        isArchived: true
-      }
-    ]);
+    const retrievedData = localStorage.getItem('notes');
+
+    if(!retrievedData){
+      this.allNotes.next([
+        {
+          id: '1',
+          title: 'Grocery List',
+          lastEdited: Date.now() - 1000000,
+          text: 'Milk, Bread, Eggs, Butter',
+          tag: 'Personal',
+          isArchived: false
+        },
+        {
+          id: '2',
+          title: 'Meeting Notes',
+          lastEdited: Date.now() - 200000,
+          text: 'Discuss Q3 roadmap and hiring goals.',
+          tag: 'Work',
+          isArchived: false
+        },
+        {
+          id: '3',
+          title: 'Books to Read',
+          lastEdited: Date.now() - 5000000,
+          text: 'Atomic Habits, Deep Work, Clean Architecture',
+          tag: 'Personnal',
+          isArchived: true
+        },
+        {
+          id: '5',
+          title: 'Vacation Plan',
+          lastEdited: Date.now() - 700000,
+          text: 'Look into flights to Italy and Airbnb options.',
+          tag: 'Personnal',
+          isArchived: true
+        }
+      ]);
+      this.saveNotes(this.allNotes.value);
+    } else {
+      this.allNotes.next(JSON.parse(retrievedData));
+    }
     this.notesData = this.allNotes.value;
     this.currentNote.next(this.allNotes.value[0]);
   }
@@ -84,14 +83,19 @@ export class NotesService {
   addNewNote(note: NoteType) {
     const updatedList = [...this.allNotes.value, note];
     this.allNotes.next(updatedList);
+    this.saveNotes(updatedList);
     this.getAllNotes();
   }
 
-  getAllNotes(){
+  getAllNotes() {
     return this.allNotes;
   }
 
-  filterSelection(){
+  saveNotes(allNotes: NoteType[]) {
+    localStorage.setItem('notes', JSON.stringify(allNotes));
+  }
+
+  filterSelection() {
     if(!this.isAllNotesSelected.value){
       this.allNotes.next(this.notesData);
     } else {
@@ -107,13 +111,14 @@ export class NotesService {
     this.isCurrentArchived();
   }
 
-  deleteNote(){
+  deleteNote() {
     this.notesData.filter(note => note.id !== this.currentNote.value.id);
     this.allNotes.next(this.allNotes.value.filter(note => note.id !== this.currentNote.value.id));
+    
+    this.saveNotes(this.allNotes.value);
   }
 
   archiveNote() {
-    console.log('archive');
     this.notesData.forEach(note => {
       if(note.id === this.currentNote.value.id){
         note.isArchived = true;
@@ -124,11 +129,11 @@ export class NotesService {
         note.isArchived = true;
       }
     });
+    this.saveNotes(this.allNotes.value);
     this.isCurrentArchived();
   }
 
   unarchiveNote() {
-    console.log('unarchive');
     this.notesData.forEach(note => {
       if(note.id === this.currentNote.value.id){
         note.isArchived = false;
@@ -139,6 +144,7 @@ export class NotesService {
         note.isArchived = false;
       }
     });
+    this.saveNotes(this.allNotes.value);
     this.isCurrentArchived();
   }
 
