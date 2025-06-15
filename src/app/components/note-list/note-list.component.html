@@ -1,5 +1,5 @@
 <section class='note-list-section'>
-  <button class='btn-add'>+ Create New Note</button>
+  <button class='btn-add' (click)="onOpenModal()">+ Create New Note</button>
   <div class='notes'>
     @for(note of (noteList$ | async); track note.id){
       <app-note-item [note]='note' (click)='onNoteSelection(note.id)' />

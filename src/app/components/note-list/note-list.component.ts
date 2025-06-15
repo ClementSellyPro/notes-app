@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { NoteItemComponent } from '../note-item/note-item.component';
 import { NotesService } from '../../services/notes.service';
 import { NoteType } from '../../models/note.model';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { Observable } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 
 @Component({
@@ -26,5 +26,9 @@ export class NoteListComponent implements OnInit {
 
   onNoteSelection(id: string) {
     this.notesService.noteSelection(id);
+  }
+
+  onOpenModal() {
+    this.notesService.openModal();
   }
 }

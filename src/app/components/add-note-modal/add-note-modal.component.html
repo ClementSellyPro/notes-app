@@ -3,24 +3,24 @@
     <h2 class='modal-title'>Add a new note</h2>
     <form>
       <div class='input-group'>
-        <label>Title</label>
-        <input type='text' />
+        <label [htmlFor]="title">Title</label>
+        <input type='text' name='title' [(ngModel)]='title' />
       </div>
       <div class='input-group'>
         <label>Tag</label>
-        <select>
-          <option>Personnal</option>
-          <option>Work</option>
+        <select [(ngModel)]="tagSelection" name='tagSelection'>
+          <option value='Personnal'>Personnal</option>
+          <option value='Work'>Work</option>
         </select>
       </div>
       <div class='input-group'>
-        <label>Content</label>
-        <textarea></textarea>
+        <label [htmlFor]="noteContent">Content</label>
+        <textarea name='noteContent' [(ngModel)]="noteContent"></textarea>
       </div>
 
       <div class='buttons'>
-        <button class='cancel-btn'>Cancel</button>
-        <button class='add-btn'>Add</button>
+        <button class='cancel-btn' (click)='onCancelNewNote()'>Cancel</button>
+        <button class='add-btn' (click)="onAddNewNote()">Add</button>
       </div>
     </form>
   </div>

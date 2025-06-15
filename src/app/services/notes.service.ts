@@ -23,6 +23,9 @@ export class NotesService {
   isCurrentNoteArchived: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
   isCurrentNoteArchived$: Observable<boolean> = this.isCurrentNoteArchived.asObservable();
 
+  isModalOpen: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
+  isModalOpen$: Observable<boolean> = this.isModalOpen.asObservable();
+
   constructor() {
     this.allNotes.next([
       {
@@ -68,6 +71,20 @@ export class NotesService {
     ]);
     this.notesData = this.allNotes.value;
     this.currentNote.next(this.allNotes.value[0]);
+  }
+
+  openModal() {
+    this.isModalOpen.next(true);
+  }
+
+  closeModal() {
+    this.isModalOpen.next(false);
+  }
+
+  addNewNote(note: NoteType) {
+    const updatedList = [...this.allNotes.value, note];
+    this.allNotes.next(updatedList);
+    this.getAllNotes();
   }
 
   getAllNotes(){
