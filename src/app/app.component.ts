@@ -4,6 +4,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { NoteListComponent } from './components/note-list/note-list.component';
 import { NoteInformationComponent } from './components/note-information/note-information.component';
 import { NoteControlsComponent } from './components/note-controls/note-controls.component';
+import { AddNoteModalComponent } from './components/add-note-modal/add-note-modal.component';
 
 @Component({
   selector: 'app-root',
@@ -12,7 +13,8 @@ import { NoteControlsComponent } from './components/note-controls/note-controls.
     HeaderComponent,
     NoteListComponent,
     NoteInformationComponent,
-    NoteControlsComponent
+    NoteControlsComponent,
+    AddNoteModalComponent
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
