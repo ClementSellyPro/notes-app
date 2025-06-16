@@ -85,9 +85,11 @@ export class NotesService {
     this.allNotes.next(updatedList);
     this.saveNotes(updatedList);
     this.getAllNotes();
+    this.sortNewNotesFirst();
   }
 
   getAllNotes() {
+    this.sortNewNotesFirst();
     return this.allNotes;
   }
 
@@ -131,6 +133,7 @@ export class NotesService {
     });
     this.saveNotes(this.allNotes.value);
     this.isCurrentArchived();
+    this.sortNewNotesFirst();
   }
 
   unarchiveNote() {
@@ -146,9 +149,15 @@ export class NotesService {
     });
     this.saveNotes(this.allNotes.value);
     this.isCurrentArchived();
+    this.sortNewNotesFirst();
   }
 
   isCurrentArchived() {
     this.isCurrentNoteArchived.next( this.currentNote.value.isArchived );
+  }
+
+  sortNewNotesFirst() {
+    const sortedNotes = this.allNotes.value.sort((a, b) => b.lastEdited - a.lastEdited);
+    this.allNotes.next(sortedNotes);
   }
 }
