@@ -1,7 +1,7 @@
 export interface NoteType {
   id: string,
   title: string,
-  lastEdited: number,
+  lastEdited: string,
   text: string
   tag: string
   isArchived: boolean

@@ -22,7 +22,7 @@ export class AddNoteModalComponent {
     const newNote: NoteType = {
       id: self.crypto.randomUUID(),
       title: this.title,
-      lastEdited: Date.now(),
+      lastEdited: Date(),
       text: this.noteContent,
       tag: this.tagSelection,
       isArchived: false
